@@ -172,9 +172,9 @@ jobs:
               env:
                   NODE_OPTIONS: --max-old-space-size=6144
 
-            # - name: Create snapshot
-            #   uses: WarpBuilds/snapshot-save@v1
-            #   with:
-            #     alias: 'warp-snap-praj-posthog-frontend-jest-${{matrix.segment}}-${{matrix.chunk}}'
-            #     fail-on-error: true
-            #     wait-timeout-minutes: 60
+            - name: Create snapshot
+              uses: WarpBuilds/snapshot-save@v1
+              with:
+                alias: 'warp-snap-praj-posthog-frontend-jest-${{matrix.segment}}-${{matrix.chunk}}'
+                fail-on-error: true
+                wait-timeout-minutes: 60
