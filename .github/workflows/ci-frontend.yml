@@ -17,7 +17,10 @@ jobs:
     # we skip each step individually, so   they are still reported as success
     # because many of them are required for CI checks to be green
     changes:
-        runs-on: warp-custom-praj-arc-test
+        runs-on: ${{ matrix.runner }}
+        strategy:
+            matrix:
+                runner: [warp-praj-arc-test, warp-custom-praj-arc-test]
         timeout-minutes: 5
         name: Determine need to run frontend checks
         outputs:
@@ -59,7 +62,10 @@ jobs:
         name: Code quality checks
         needs: changes
         # kea typegen and typescript:check need some more oomph
-        runs-on: warp-praj-arc-test
+        runs-on: ${{ matrix.runner }}
+        strategy:
+            matrix:
+                runner: [warp-praj-arc-test, warp-custom-praj-arc-test]
         steps:
             # we need at least one thing to run to make sure we include everything for required jobs
             - uses: actions/checkout@v3
@@ -132,7 +138,7 @@ jobs:
             #     wait-timeout-minutes: 60
 
     jest:
-        runs-on: warp-praj-arc-test
+        runs-on: ${{ matrix.runner }}
         needs: changes
         name: Jest test (${{ matrix.segment }} - ${{ matrix.chunk }})
 
@@ -140,6 +146,7 @@ jobs:
             # If one test fails, still run the others
             fail-fast: false
             matrix:
+                runner: [warp-praj-arc-test, warp-custom-praj-arc-test]
                 segment: ['FOSS', 'EE']
                 chunk: [1, 2, 3]
 
