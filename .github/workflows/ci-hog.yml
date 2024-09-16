@@ -5,12 +5,12 @@
 name: Hog CI
 
 on:
-    push:
-        # branches:
-        #     - master
-        paths-ignore:
-            - rust/**
-            - livestream/**
+    # push:
+    #     branches:
+    #         - master
+    #     paths-ignore:
+    #         - rust/**
+    #         - livestream/**
     pull_request:
         paths-ignore:
             - rust/**
