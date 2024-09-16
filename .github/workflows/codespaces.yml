@@ -9,9 +9,9 @@ name: GitHub Codespaces image build
 # and master as caching, so if we want to add the optimisation for branches we
 # can just remove the master branch restriction.
 on:
-    push:
-        branches:
-            - master
+    # push:
+    #     branches:
+    #         - master
     pull_request:
         types:
             - opened

@@ -6,8 +6,8 @@ name: Hog CI
 
 on:
     push:
-        branches:
-            - master
+        # branches:
+        #     - master
         paths-ignore:
             - rust/**
             - livestream/**

@@ -12,10 +12,10 @@
 name: 'CodeQL'
 
 on:
-    push:
-        branches: ['master']
-        paths-ignore:
-            - 'rust/**'
+    # push:
+    #     branches: ['master']
+    #     paths-ignore:
+    #         - 'rust/**'
     pull_request:
         branches: ['master']
         paths-ignore:

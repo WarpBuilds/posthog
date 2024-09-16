@@ -2,12 +2,12 @@ name: Build and deploy rust container images
 
 on:
     workflow_dispatch:
-    push:
-        paths:
-            - 'rust/**'
-            - '.github/workflows/rust-docker-build.yml'
-        branches:
-            - 'master'
+    # push:
+    #     paths:
+    #         - 'rust/**'
+    #         - '.github/workflows/rust-docker-build.yml'
+    #     branches:
+    #         - 'master'
 
 jobs:
     build:

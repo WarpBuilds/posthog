@@ -2,9 +2,9 @@ name: Plugin Server CI
 
 on:
     pull_request:
-    push:
-        branches:
-            - master
+    # push:
+    #     branches:
+    #         - master
 
 env:
     OBJECT_STORAGE_ENABLED: true

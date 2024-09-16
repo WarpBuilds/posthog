@@ -5,9 +5,9 @@
 name: Backend CI
 
 on:
-    push:
-        branches:
-            - master
+    # push:
+    #     branches:
+    #         - master
     workflow_dispatch:
         inputs:
             clickhouseServerVersion:

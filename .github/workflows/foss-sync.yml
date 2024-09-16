@@ -3,7 +3,7 @@ name: Sync PostHog FOSS
 on:
     push:
         branches:
-            - master
+            # - master
             - main
 
 jobs:

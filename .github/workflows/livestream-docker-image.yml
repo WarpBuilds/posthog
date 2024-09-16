@@ -1,9 +1,9 @@
 name: Livestream Docker CI/CD
 
 on:
-    push:
-        branches:
-            - master
+    # push:
+    #     branches:
+    #         - master
         paths:
             - 'livestream/**'
             - '.github/workflows/livestream-docker-image.yml'

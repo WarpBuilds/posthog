@@ -2,12 +2,12 @@ name: Build and deploy replay capture container images
 
 on:
     workflow_dispatch:
-    push:
-        paths:
-            - 'vector/**'
-            - '.github/workflows/vector-docker-build-deploy.yml'
-        branches:
-            - 'master'
+    # push:
+    #     paths:
+    #         - 'vector/**'
+    #         - '.github/workflows/vector-docker-build-deploy.yml'
+    #     branches:
+    #         - 'master'
 
 jobs:
     build:

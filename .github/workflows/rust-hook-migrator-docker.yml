@@ -2,12 +2,12 @@ name: Build rust hook-migrator docker image
 
 on:
     workflow_dispatch:
-    push:
-        paths:
-            - 'rust/**'
-            - '.github/workflows/rust-hook-migrator-docker.yml'
-        branches:
-            - 'master'
+    # push:
+    #     paths:
+    #         - 'rust/**'
+    #         - '.github/workflows/rust-hook-migrator-docker.yml'
+    #     branches:
+    #         - 'master'
 
 permissions:
     packages: write
