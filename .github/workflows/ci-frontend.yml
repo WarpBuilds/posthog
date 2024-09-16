@@ -17,7 +17,10 @@ jobs:
     # we skip each step individually, so   they are still reported as success
     # because many of them are required for CI checks to be green
     changes:
-        runs-on: warp-praj-arc-test
+        runs-on: ${{ matrix.runner }}
+        strategy:
+            matrix:
+                runner: [warp-praj-arc-test, warp-custom-praj-arc-test]
         timeout-minutes: 5
         name: Determine need to run frontend checks
         outputs:
@@ -25,8 +28,6 @@ jobs:
         steps:
             # For pull requests it's not necessary to check out the code, but we
             # also want this to run on master, so we need to check out
-            - name: Install deps
-              run: sudo apt-get update && sudo apt-get install -y wget curl unzip git
             - uses: actions/checkout@v3
 
             # - name: Setup tmate session
@@ -61,12 +62,12 @@ jobs:
         name: Code quality checks
         needs: changes
         # kea typegen and typescript:check need some more oomph
-        runs-on: warp-praj-arc-test
+        runs-on: ${{ matrix.runner }}
+        strategy:
+            matrix:
+                runner: [warp-praj-arc-test, warp-custom-praj-arc-test]
         steps:
             # we need at least one thing to run to make sure we include everything for required jobs
-            - name: Install deps
-              run: sudo apt-get update && sudo apt-get install -y wget curl unzip git
-
             - uses: actions/checkout@v3
 
             - name: Install pnpm
@@ -137,7 +138,7 @@ jobs:
             #     wait-timeout-minutes: 60
 
     jest:
-        runs-on: warp-praj-arc-test
+        runs-on: ${{ matrix.runner }}
         needs: changes
         name: Jest test (${{ matrix.segment }} - ${{ matrix.chunk }})
 
@@ -145,14 +146,12 @@ jobs:
             # If one test fails, still run the others
             fail-fast: false
             matrix:
+                runner: [warp-praj-arc-test, warp-custom-praj-arc-test]
                 segment: ['FOSS', 'EE']
                 chunk: [1, 2, 3]
 
         steps:
             # we need at least one thing to run to make sure we include everything for required jobs
-            - name: Install deps
-              run: sudo apt-get update && sudo apt-get install -y wget curl unzip git
-
             - uses: actions/checkout@v3
 
             - name: Remove ee
